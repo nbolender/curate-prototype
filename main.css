@@ -1,0 +1,69 @@
+figure.bar {
+	margin: 20px auto;
+	
+	perspective: 1000;
+	
+	position: relative;
+	width: 300px; height: 502px;
+	
+	transition: 0.3s;
+}
+
+figure.bar.blurred {
+	-webkit-filter: blur(5px);
+	filter: blur(5px);
+}
+
+figure.bar.flipped .flipper {
+	transform: rotateY(180deg);
+}
+
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	
+	position: relative;
+}
+
+.front,
+.back {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	
+	position: absolute;
+	left: 0; top: 0;
+	
+	background-color: #ffffff;
+}
+
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+.back {
+	transform: rotateY(180deg);
+}
+
+.bar-init,
+.front,
+.back {
+	width: 300px; height: 502px;
+}
+.bar-init {
+	position: relative;
+}
+.bar-init:before {
+	display: block; content: "";
+	position: absolute;
+	left: 0; top: 0;
+	width: 100%; height: 0;
+	
+	background: url(bar1.png) no-repeat;
+	background-size: 100% 100%;
+	padding-bottom: calc(100% * (820 / 490));
+}
+
+.back .bar-init:before {
+	background-image: url(bar2.png);
+}
